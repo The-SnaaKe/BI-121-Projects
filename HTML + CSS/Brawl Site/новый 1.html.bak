@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Brawl Stars</title>
+		<meta charset="utf-8"> <!--http-equiv="refresh" content="5;URL=form.html"-->
+		<link rel="shurtcut icon" href="sandy.jpg" type="image/x-icon">
+	</head>
+<body>
+	<div align="center">
+	<p id="ibrawlstars"><i><b><u>Новости родом из нашей любимой игры - Brawl Stars!</u></b></i></p>
+	<h1>Это заголовок 1</h1>
+	<h2>Это заголовок 2</h2>
+	<h3>Это заголовок 3</h3>
+	<h4>Это заголовок 4</h4>
+	<h5>Это заголовок 5</h5>
+	<h6>Это заголовок 6</h6>
+ </div>
+	<a href="https://www.youtube.com/watch?v=tb0_AUknYeQ" target="_blank">Ролик на ютубе от наших партнёров</a>
+	<br>
+	<a href="#ibrawlstars">Перейти к началу новостей</a>
+	<br>
+	<img src="bg.jpg" alt="картинка не работает" width="400" height="200">
+	<br>
+	<a target="_blank" href="form.html" title="Подсказка">Ссылка на форму регистрации</a>
+	<br>
+	<font color="#00ff00" size="24">Это зеленый текст 24 пунктов</font>
+	<br>
+	<audio controls>
+		<source src="play.mp3" type="audio/mpeg">
+	</audio>
+	<br>
+	<video controls poster="psb.jpg" width="200" height="200">
+		<source src="rolik.mp4" type="video/mp4">
+	</video>
+	<br>
+	<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d5297.484718044528!2d35.0435772!3d48.4038907!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40dbfb31475e5f41%3A0x5a924e15fd675c4b!2sKFC!5e0!3m2!1sru!2sru!4v1644557636225!5m2!1sru!2sru" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+	<br>
+	<ul>
+		<li>Зырянов</li>
+		<li>Путин</li>
+		<li>Ленин</li>
+		<li>Сталин</li>
+	</ul>
+	<ol>
+		<li>Зырянов</li>
+		<li>Путин</li>
+		<li>Ленин</li>
+		<li>Сталин</li>
+	</ol>
+	<table border="0,5" width="200" height="200">
+		<tr>
+			<td colspan="2" align="right">Кол-во занимаемых столбцов</td>
+			<td rowspan="2" align="right">Кол-во занимаемых строк</td>
+		</tr>
+		<tr>
+			<td align="left" valign="top">сверху слева</td>
+			<td align="center" valign="bottom">по центру внизу</td>
+		</tr>
+	</table>
+	<br>
+</body>
+</html>
+<html>
+<head>
+    <title>Регистрация</title>
+    <meta charset="utf-8">
+    <link href="fav.png" rel="icon" type="image/x-icon">
+</head>
+<body>
+    <form name="forma1" action="check.html" method="post">
+        Введите имя пользователя:
+        <input type="text" name="firstname" value="Имя" required>
+        <br>
+        Придумайте пароль:
+        <input type="password" name="pass" value="пароль" required>
+        <br>
+        Введите номер телефона в формате 8-9хх-ххх-хх-хх:
+        <input type="tel" name="telephone" pattern="8-9[0-9]{2}-[0-9]{3}-[0-9]{2}-[0-9]{2}">
+        <br>
+        Введите возраст:
+        <input type="number" name="birth" size="3" min="18" max="100" value="23">
+        <br>
+        Введите дату рождения:
+        <input type="date" name="calendar">
+        <br>
+        Введите мыло:
+        <input type="email" name="milo">
+        <br>
+        Введите гендер:
+        <select>
+            <option value="1">мужской
+            <option value="2">женский
+            <option value="3">трансформер
+        </select>
+        <br>
+        Выберите любимый напиток:
+        <input type="radio" name="choice1" value="1">Чай
+        <input type="radio" name="choice1" value="2">Кофе
+        <input type="radio" name="choice1" value="3">Вода
+        <input type="radio" name="choice1" value="4">Минералка
+        <br>
+        Я даю своё согласие на обработку персональных данных:
+        <input type="checkbox" name="switch" value="yes">
+        <br>
+        Расскажите о себе:
+        <textarea name="message" rows="10" cols="15">Тута писать о себе</textarea>
+        <br>
+        Загрузите фото:
+        <input type="file" name="foto">
+        <br>
+        <button type="button" onClick='location.href="main.html"'><img src="fav.png"></button>
+        <br>
+        <input type="submit" value="Отправить на обработку">
+    </form>
+</body>
+</html>

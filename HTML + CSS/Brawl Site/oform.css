@@ -1,0 +1,115 @@
+body {  /*задний фон картинка - for all*/
+    background: #0c00b4 url(https://i.imgur.com/ERFhsXL.jpg);
+    background-size: 100%;
+    position: relative;
+    text-align: center;
+}
+
+#ban {  /*Universal-fon for scum file*/
+  background: #0c00b4 url(https://i.imgur.com/ww87RE3.jpg);
+  background-size: 170px auto;
+  font-size: 140pt;
+  font-family: Tahoma;
+  color: rgb(255, 156, 7);
+}
+
+#ibrawlstars { /*Новости бравл старс*/
+    font-size: 30pt;
+    font-family: Tahoma;
+    color: rgb(255, 156, 7);
+}
+
+.menu {
+  list-style: none;     /* убирает точки или квадратики в списке */
+}
+
+.menu li {
+  display: inline; /*делает список выбора в строчку(в линию)*/
+}
+
+.menu li:after { /*что идет после мейн меню в строчку(li)*/
+  content: "|";    /* текстовый элемент(взято с инета - позволяет вставлять генерируемое содержание в текст веб-страницы, которое первоначально в тексте отсутствует.)*/
+  color: #606060; /*цвет контента */
+  display: inline;  /*делает контент в строчку(в линию)*/
+  vertical-align:top; /* управляет вертикальным выравниванием строчных элементов и содержимого ячеек таблицы.*/
+}
+
+.menu li:last-child:after { /*повторяет последнее(контент)*/
+  content: none; /*чтобы после всех разделов не было контента(символа)*/
+}
+
+.menu a { /*обращается к классу(изменяет вид ссылки)*/
+  text-decoration:none; /*Убрать подчёркивание ссылки*/
+  font-family: 'Ubuntu Condensed', sans-serif; /*какой шрифт*/
+  letter-spacing: 1px; /*промежуток между буквами*/
+  position: relative; /*где расположен относительно текста(меню)*/
+  padding-bottom: 15px; /*как низко выходит полоск*/
+  margin: 0px 34px 0px 30px; /*верхний отступ 0px - правый отступ 34px - нижний отступ 0px - левый отступ 30px*/
+  font-size: 19px; /*Определяет размер шрифта элемента*/
+  text-transform: uppercase; /*пишет все капсом*/
+  transition: color 2s; /*сколько секунд идет анимация загорания*/
+}
+.menu a, .menu a:visited { /*пока к классу меню не идет обращение она не меняет свой цвет*/
+  color: #ffffff1f;   /* цвет кнопок по умолчанию*/
+  }
+.menu a.current,
+.menu a:hover { /*при наведении курсора мыши, элемент еще не активирован,предназначен для выделения текущего пункта меню фоновым рисунком.*/
+  color: #feb386;   /* цвет кнопок при наведении*/
+}
+
+.menu a:before,
+.menu a:after { /*выдает диапазон для работы*/
+  content: ""; /*пустой контент(пустую строку)*/
+  position: absolute; /*позиция контента относительно последнего позиционировоного предка*/
+  height: 5px; /*высота контента*/
+  right: 50%; /*от скольки процентов справа будет начинаться контент*/
+  bottom: -5px; /*на сколько пикселей вниз уйдет контент относительно позиции*/
+  left: 50%; /*от скольки процентов слева будет начинаться контент*/
+  background: #feb386; /*цвет контента*/
+  transition: 1s; /*длительность анимации открытия контента*/
+}
+.menu a:hover:before, .menu .current:before {left: 0%;}/*сколько процентов не дойдет до края*/
+.menu a:hover:after, .menu .current:after {right: 0%;}  /*сколько процентов не дойдет до края*/
+
+.button {
+  display: inline-block;
+  background: #919cff;
+  color: #3847d8;
+  padding: 15px;
+  border: none;
+  border-radius: 50px;
+  text-decoration: none;
+  font-family: Tahoma;
+  font-size: 18px;
+  line-height: 1;/*высота*/
+  font-weight: 1000;/*толщина*/
+  cursor: pointer;
+}
+
+#location{
+  display: inline-block;
+  background: #2196f3;
+  color: #fff;
+  padding: 12px;
+  border-radius: 3px;
+  text-decoration: none;
+  font-family: Tahoma;
+  font-size: 18px;
+  line-height: 1;
+  font-weight: 100;
+}
+
+#linia {   /*линия*/
+  border-bottom: solid 3px #ffffff5b;
+}
+
+.allakk {
+  font-size: 30pt;
+  font-family: Tahoma;
+  color: rgb(255, 156, 7);
+}
+
+#scam {
+  font-family: Tahoma;
+  color: #808080;
+}
