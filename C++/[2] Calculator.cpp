@@ -1,6 +1,5 @@
 #include <iostream>
 #include <cmath>
-#include <cstdlib>
 
 using namespace std;
 
@@ -64,4 +63,5 @@ int main()
         cout << "Do you want to continue? (y/n)" << endl;
         cin >> var;
     }
+    return 0;
 }

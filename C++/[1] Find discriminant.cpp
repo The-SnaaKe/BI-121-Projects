@@ -1,6 +1,5 @@
 #include <iostream>
 #include <cmath>
-#include <cstdlib>
 
 using namespace std;
 
@@ -38,5 +37,5 @@ int main()
     {
         cout << "no sqrt" << endl;
     }
-    system("pause");
+    return 0;
 }
