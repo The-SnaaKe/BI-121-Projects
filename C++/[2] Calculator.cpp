@@ -1,33 +1,47 @@
 #include <iostream>
-#include <cmath> //матан
-#include <cstdlib> // сист функции пауза
+#include <cmath>
+#include <cstdlib>
 
 using namespace std;
-int main(){ // объявление тела проги
-float a,b,c,x,x1,x2,D;
-cout  << "vedite a b c" <<  endl;
-cin  >>  a  >>  b  >>  c;
-if(a==0 and b==0){
-cout << "no sqrty" << end;
+
+int main(){
+
+int a, b, action;
+char var;
+
+do{
+cout << "Enter 2 numbers: " << endl;
+cin >> a >> b;
+
+cout << "Сhoose an action: " << endl <<
+"1. Addition (+)"<< endl <<
+"2. Subtraction (-)" << endl <<
+"3. Multiplication (*)" << endl <<
+"4. Division (/)" << endl;
+cin >> action;
+
+switch (action)
+{
+case 1:
+cout << "Result of addition: " << a + b << endl;
+break;
+case 2:
+cout << "Result of subtraction: " << a - b << endl;
+break;
+case 3:
+cout << "Result of multiplication: " << a * b << endl;
+break;
+case 4:
+cout << "Result of division:  " << (float) a / b << endl;
+break;
+
+default:
+cout << "Error" << endl;
+break;
 }
-else if (a==0){
-x=-c/b;
-cout  << "x=" << x << endl;
+cout << "Do you want to continue? (y/n)" << endl;
+cin >> var;
 }
-else{
-D=(pow(b,2))-(4*a*c);
-}
-if (D>0) {
-x1=(-b+sqrt(D))/(2*a);
-x2=(-b-sqrt(D))/(2*a);
-cout  <<  "x1=" <<  x1  << "x2=" <<  x2  << endl;
-}
-else if (D=0){
-x=-b/(2*a);
-cout << "x=" <<  x  <<  endl;
-}
-else {
-cout << "no sqrt" <<  endl;
-}
-system("pause");
+while (var == 'y');
+
 }
