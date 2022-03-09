@@ -6,43 +6,49 @@ using namespace std;
 bool game_over;
 const int w = 20;
 const int h = 20;
-int x,y,
-eatx,eaty,
-record;
-int main(){
-enum going { //Enum - перечисление, going - название перечисления
-    LEFT, 
-    RIGHT,
-    UP,
-    DOWN,
-    STOP = 0
-};
-going num; //Типу going соответсвует переменная num
-
-void setup() //Тип данных который не возвращает значение
+int x, y,
+    eatx, eaty,
+    record;
+int main()
 {
-    game_over = false;
-    num = STOP;
-    x = w/2;
-    y = h/2;
-    eatx = rand () % w;
-    eaty = rand () % h;
-    record = 0;
-}
+    enum going
+    { // Enum - перечисление, going - название перечисления
+        LEFT,
+        RIGHT,
+        UP,
+        DOWN,
+        STOP = 0
+    };
+    going num; //Типу going соответсвует переменная num
 
-void draw(){
+    void setup() //Тип данных который не возвращает значение
+    {
+        game_over = false;
+        num = STOP;
+        x = w / 2;
+        y = h / 2;
+        eatx = rand() % w;
+        eaty = rand() % h;
+        record = 0;
+    }
 
-}
+    void draw()
+    {
+        system ("cls");
+        for (int i = 0; i < w; i++)
+        for (int j = 0; j < h; j++)
+    }
 
-void press(){
+    void press()
+    {
+    }
 
-}
-
-void mechanica(){
-
-}
+    void mechanica()
+    {
+    }
     setup();
-    while (game_over == false){
+    while (game_over == false)
+    {
         draw();
         press();
         mechanica();
