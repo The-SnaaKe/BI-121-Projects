@@ -24,7 +24,7 @@ int main()
              << "3. Multiplication (*)" << endl
              << "4. Division (/)" << endl
              << "5. Exponentiation (^)" << endl
-             << "6. Operation (x)" << endl;
+             << "6. Operation (%)" << endl;
         cin >> action;
 
         switch (action)
@@ -52,8 +52,7 @@ int main()
             cout << "Result of exponentiation: " << pow(a, b) << endl;
             break;
         case 6:
-            cout << "Result of operation:  "
-                 << "Operation" << endl;
+            cout << "Result of operation:  " << (float)a/b * 100 << endl;
             break;
 
         default:
