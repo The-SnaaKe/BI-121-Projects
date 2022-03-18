@@ -28,8 +28,8 @@ void setup() //Тип данных который не возвращает зн
     num = STOP;
     x = w / 2 - 1;
     y = h / 2 - 1;
-    eatx = rand() % w - 1;
-    eaty = rand() % h - 1;
+    eatX = rand() % w - 1;
+    eatY = rand() % h - 1;
     record = 0;
 }
 
@@ -49,6 +49,7 @@ void draw()
             {
                 cout << "=";
             }
+            
             if (x == j && y == i)
             {
                 cout << "@";
@@ -67,7 +68,7 @@ void draw()
                     if (taleX[k] == j && taleY[k] == i)
                     {
                         xvosdick = true;
-                        cout < "o";
+                        cout << "o";
                     }
                 }
 
@@ -120,6 +121,8 @@ void mechanica()
         bufY = taleY[i];
         taleX[i] = befttaleX;
         taleY[i] = befttaleY;
+        befttaleX = bufX;
+        befttaleY = bufY;
     }
 
     switch (num)
@@ -137,19 +140,34 @@ void mechanica()
         y++;
         break;
     }
+    
+    for (int i = 0; i < hvost; i++){
+        if(x == taleX[i] && y == taleY[i])
+            game_over = true;
+    }
+    
     if (x > w or x < 0 or y > h or y < 0)
         game_over = true;
+        
+    if (x >= w)
+        x = 0;
+    else if (x < 0)
+        x = w - 2;
+        
+    if (y >= h)
+        y = 0;
+    else if (x < 0)
+        y = h;
+        
     for (int i = 0; i < hvost; i++)
         if (taleX[i] == x && taleY[i] == y)
-    if (x == eatX and y == eatY)
-    {
-        record += 1;
-        eatX = rand() % w - 1;
-        eatY = rand() % h - 1;
-        hvost++;
-    }
-}
-
+            if (x == eatX and y == eatY){
+                record += 1;
+                eatX = rand() % w - 1;
+                eatY = rand() % h - 1;
+                hvost++;
+                }
+}                
 int main()
 {
     srand(time(NULL));
