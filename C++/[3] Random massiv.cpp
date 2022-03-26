@@ -1,20 +1,25 @@
 #include <iostream>
 #include <ctime>
+#include <cstdlib>
 
 using namespace std;
 
 int main()
 {
     char var = 'y';
-    int i, a[15], sum;
+    int n, sum;
 
     while (var == 'y')
     {
+        cout << "Enter n - ";
+        cin >> n;
+        int a[n];
+
         sum = 0;
         cout << "Massiv = ";
         srand(time(NULL));
 
-        for (int i = 0; i < 15; i++)
+        for (int i = 0; i < n; i++)
         {
             a[i] = rand() % 31 - 15;
             cout << a[i] << " ";
@@ -26,5 +31,5 @@ int main()
         cout << "Do you want to continue? (y/n)" << endl;
         cin >> var;
     }
-    return 0;
+    system("pause");
 }
