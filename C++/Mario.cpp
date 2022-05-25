@@ -3,7 +3,11 @@
 
 using namespase sf;
 
+View cumera;
+
 class Father{
+  private:
+    float x, y, stepX, stepY, speed, w, h;
   public:
     float x, y, stepX, stepY, speed, w, h;
     int Wheremove;
@@ -45,12 +49,26 @@ class Father{
         x += stepX * time;
         y += stepY * time;
         time = 0;
-        sprite.SetPosition(x, y + 280);
+        sprite.SetPosition(x, y + 365);
+      }
+      float MarioX() {
+        return x;
+      }
+      float MarioY() {
+        return y;
       }
     };
+  
+  void MarioPos(float x, float y){
+    float timeX = x;
+    float timeY = y;
+    if (X <= 0)
+       
+  }
 
 int main{
-  Father m("hero.png",0, 0, 64, 85);
+  Father m("hero.png",64, 85, 0, 0);
+  m.sprite.setScale(0.8, 0.5);
   int height = 17, width = 240;
   String map[height] = {
 "ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss";,
@@ -73,7 +91,7 @@ int main{
   Image icon;
   icon.loadFromFile("путь к фавикону");
   window.setIcon("разрешение, фавикона", icon.getPixelsPtr());
-  int size = 32;
+  const int size = 32;
   
   /*Image hero_image;
   hero_image.loafFromFile("хироэмаге ");
@@ -92,7 +110,8 @@ int main{
   music1.openFromFile("путь к музыке");
   music1.play;
   Clock clock;
-  float nowFrame = 0;                          
+  float FrameMario = 0;                          
+  float FrameCoin = 5;
   while (window1.isOpen()){
     float time = clock.getElapsedTime().asMicroseconds();
     clock.restart();
@@ -124,20 +143,21 @@ int main{
     }
     */
     if (Keyboard::isKeyPressed(Keyboard::Right)){
+      m.sprite.setScale(0.8, 0.5);
       m.Wheremove = 0;
       m.speed = 0.2;
-      nowFrame += 0.01 * time;
-      if(nowFrame > 4)
-        nowFrame -= 4;
+      FrameMario += 0.01 * time;
+      if(FrameMario > 4)
+        FrameMario -= 4;
       m.sprite.SetTextureRect (IntRect(80*int(nowFrame), 0, 80, 85));
       
     if (Keyboard::isKeyPressed(Keyboard::Left)){
-      m.sprite.setScale(-1, 1);
+      m.sprite.setScale(-0.8, 0.5);
       m.Wheremove = 1;
       m.speed = 0.2;
-      nowFrame += 0.01 * time;
-      if(nowFrame > 4)
-        nowFrame -= 4;
+      FrameMario += 0.01 * time;
+      if(FrameMario > 4)
+        FrameMario -= 4;
       m.sprite.SetTextureRect (IntRect(80*int(nowFrame), 0, 80, 85));
       
       
@@ -151,17 +171,23 @@ int main{
     window1.clear();
     for (int i = 0; i < height ;i++)
       for(int j = 0; j < width; j++){
-        if (map [i][j] == 's' or map [i][j] == ' '
+        if (map [i][j] == 's' or map [i][j] == ' ')
             map_sprite.setTextureRect(intRect(size * 4, 0, size, size));
-        if (map [i][j] == 'b' or map [i][j] == ' '
+        if (map [i][j] == 'b' or map [i][j] == ' ')
             map_sprite.setTextureRect(intRect(size * 2, 0, size, size));
-        if (map [i][j] == 'g' or map [i][j] == ' '
+        if (map [i][j] == 'g' or map [i][j] == ' ')
             map_sprite.setTextureRect(intRect(0, 0, size, size));
-        if (map [i][j] == 'q' or map [i][j] == ' '
+        if (map [i][j] == 'q' or map [i][j] == ' ')
             map_sprite.setTextureRect(intRect(size * 3, 0, size, size));
-        if (map [i][j] == 'u' or map [i][j] == ' '
+        if (map [i][j] == 'u' or map [i][j] == ' ')
             map_sprite.setTextureRect(intRect(size, 0, size, size));
-        map_sprite.setPosition(i * size, j * size);                       ////////////
+        if (map [i][j] == 'c'){
+            frameCoin += 0.00005 * time;
+              if (FrameCoin > 7)
+                 frameCoin -= 2;
+            map_sprite.setTextureRect(intRect(size, 0, size, size));
+        }
+        map_sprite.setPosition(i * size, j * size);
         window1.draw(map_sprite);
       }
     window1.draw(m.sprite);
