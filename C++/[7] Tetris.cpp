@@ -30,6 +30,7 @@ bool test() {
 }
 
 int main() {
+	setlocale(LC_ALL, "Russian");
 	srand(time(0));
 	RenderWindow window1(VideoMode(height * size, width * size), L"Жесткий тетрис!", Style::Close);
 	Image icon;
@@ -50,6 +51,10 @@ int main() {
 		float time = timeClock.getElapsedTime().asSeconds();
 		timeClock.restart();
 		secondomer += time * 0.5; //когда фигурка падает секундомер вкл и начинает робить
+
+		Music music;//создаем объект музыки
+		music.openFromFile("C:/Users/Семён/Рабочий стол/Дистант/Paint/Music.ogg");//загружаем файл
+		music.play();//воспроизводим музыку
 
 		/*Обработка действий*/
 		Event doing;
