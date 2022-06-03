@@ -104,7 +104,8 @@ class Father{
         return y;
       }
       void collision(float stepX, stepY) {
-        for (int i = ;)
+        for (int i = y / size; i < (t+h)/size; i++)
+         for (int j = x / size; j < (x+w)/size; j++)
       }
     };
   
