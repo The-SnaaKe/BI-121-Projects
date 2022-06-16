@@ -1,12 +1,12 @@
 #include <SFML/Graphics.hpp> // среда разработки(простая,быстрая,мультимедийная библиотека)
-#include <ctime> // Библиотека для рандома.
+#include <ctime> // Библиотека для рандома фигур.
 #include <SFML/Audio.hpp> //Библиотека для музыка
 using namespace sf; //Пространство имён для библиотеки sfml
 
 const int width = 20, height = 10; //высота и ширина для полей
 int pole[width][height] = { 0 }; //объявили двумерный массив(размерность массива всегда const), фигурки будут выпадать из нолика
-const int size = 34;
-int figure[7][4] = { // 7 строк, 4 столбца
+const int size = 34; // Размер квадратика
+int figure[7][4] = { // 7 строк, 4 столбца (Позицию квадратика в каждой из возможных фигур объявили.)
 1,3,5,7,
 2,4,5,7,
 3,5,4,6,
@@ -25,31 +25,33 @@ bool test() {
 	for (int i = 0; i < 4; i++) //двигаюсь по х
 		if (tek[i].x < 0 || tek[i].x >= height || tek[i].y >= width) //Проверка на границы, если мы вышли за границы игра не заканчивается | Левая граница | Нижняя граница | Правая граница
 			return 0; //Всё окей мы врезаемся, но работаем дальше
-		else if (pole[tek[i].y][tek[i].x]) // Иначе просто поле у нас
-			return 0; 
+		else if (pole[tek[i].y][tek[i].x]) // Проверяем заполненнось поля по х и у |
+			return 0;
 }
 
 int main() { //Главная функция
 	setlocale(LC_ALL, "Russian"); //Устанавливаем язык локализации русский
 	srand(time(0)); // Обновляем рандом
-	RenderWindow window1(VideoMode(height * size, width * size), L"Жесткий тетрис!", Style::Close); //Отрисовываем окно - window1; размером - ...; литерал"Имя", чтобы крестик работал
-	Image icon; //Обявляем иконку
+	RenderWindow window1(VideoMode(height * size, width * size), L"Жесткий тетрис!", Style::Close); //Отрисовываем окно - window1; размером - ...; литерал"Имя", чтобы запретить разворот окна
+	Image icon; //Объявляем иконку
 	icon.loadFromFile("C:/Users/Семён/Рабочий стол/Дистант/Paint/elements.png"); //Загружаем иконку
+	window1.setIcon(428, 608, icon.getPixelsPtr()); //Выводим иконку в левом верхнем углу, с помощью растровой графики, при приближении увижу пиксили
+
 	//Проигрышь
 	Texture gameOverTexture; //Обявляем текстурку для проигрыша
 	gameOverTexture.loadFromFile("C:/Users/Семён/Рабочий стол/Дистант/Paint/loze.png"); //Загружаем текстурку проигрыша
-	window1.setIcon(428, 608, icon.getPixelsPtr()); //Выводим иконку в левом верхнем углу, с помощью растровой графики, при приближении увижу пиксили
+
 	Texture quad; // текстура для квадратов
 	quad.loadFromFile("C:/Users/Семён/Рабочий стол/Дистант/Paint/tiles.png"); //загружаем текстурки квадратов
 	Sprite sfigure(quad); // модель для фигурки в 2 пространстве в расстровом виде
-	Clock timeClock; //время за которое фигура падает
+	Clock timeClock; //Часики | время за которое фигура падает
 	bool rotate = false; //изначально фигуры без поворота
 	int stepX = 0, line = 1; //шаг по Х; линия
 	float delay = 0.5, secondomer = 0; //задержка падения ; для измерения времени с помощью timeClock
 
 	while (window1.isOpen()) {
 		float time = timeClock.getElapsedTime().asSeconds(); //Вводим переменную time = и пускаем время по кругу в секундах
-		timeClock.restart(); // 
+		timeClock.restart(); // После того как фигура заняла место, часики перезапускаются
 		secondomer += time * 0.5; //когда фигурка падает секундомер вкл и начинает робить
 
 		Music music; //создаем объект музыки
@@ -67,24 +69,24 @@ int main() { //Главная функция
 				else if (doing.key.code == Keyboard::Left)
 					stepX = -1;
 
-			if (doing.type == Event::Closed)
+			if (doing.type == Event::Closed) //Если тип события нажатие на крестик
 				window1.close();//закрытие окна
 		}
 
 		if (Keyboard::isKeyPressed(Keyboard::Down))
 			delay = 0.05; //если клавиша вниз то уменьшается задержка
 
-		/* Не ебу как */
+		/* Движение по оси х с проверкой условия*/
 		for (int i = 0; i < 4; i++) {
 			pred[i] = tek[i];
 			tek[i].x += stepX;
 		}
 
 		/*Если достиг границы то след положение будет предыдущим*/
-		if (!test()) { 
+		if (!test()) {
 			for (int i = 0; i < 4; i++)
 				tek[i] = pred[i];
-		} 
+		}
 
 		if (rotate) {
 			koordinati_kubika buff = tek[1]; //В структу закидываем буфер с кубиком
@@ -95,9 +97,9 @@ int main() { //Главная функция
 				tek[i].y = buff.y + y; //Узнаю тек положение координаты кубика по у
 			}
 			/*Тут же в повороте проверяю границы*/
-			if (!test()) { //Проверка на границы при повороте! если достиг границы то след положение будет предыдущим
+			if (!test()) { //Проверка на границы при повороте! 
 				for (int i = 0; i < 4; i++)
-					tek[i] = pred[i];
+					tek[i] = pred[i]; // если достиг границы то след положение будет предыдущим
 			}
 		}
 
@@ -105,14 +107,15 @@ int main() { //Главная функция
 		if (secondomer > delay) {
 			for (int i = 0; i < 4; i++) {
 				pred[i] = tek[i];
-				tek[i].y += 1; 
+				tek[i].y += 1; //Когда падает фигура, она падает на клеточку
 			}
 
 			/*Проверка условия на, то что достигли нижней линии*/
 			if (!test()) {
 				for (int i = 0; i < 4; i++)
-					pole[pred[i].y][pred[i].x] = line; //Если в нашем поле, наша фигура достигла нижней линии, то мы
+					pole[pred[i].y][pred[i].x] = line; //Проверяю что-бы первая фигура упала нормально на линию, а другие то что на линии расположено
 				line = 1 + rand() % 7; //Приземление фигуры
+
 				int n = rand() % 7; //Генерация новой фигуры
 				for (int i = 0; i < 4; i++) {
 					tek[i].x = figure[n][i] % 2; // | Остаток от деления на 2
@@ -133,29 +136,29 @@ int main() { //Главная функция
 					window1.draw(gameOverSprite);
 					window1.display();
 					system("pause");
-			}
+				}
 
 		int n = rand() % 7; //Задали первую фигуру
-		if (tek[1].x == 0) //Левая гранца 
+		if (tek[1].x == 0) //Левая гранца  | 1 - потому-что я теперь могу сдвинуться в самый левый край
 			for (int i = 0; i < 4; i++) {
 				tek[i].x = figure[n][i] % 2;
 				tek[i].y = figure[n][i] / 2;
 			}
 
-		int delLine = width - 1; //При удалении мы рассматриваем всё поле
-		for (int i = width - 1; i > 0; i--) {
+		int delLine = width - 1;
+		for (int i = width - 1; i > 0; i--) { //При удалении мы рассматриваем всё поле
 			int kolvoLine = 0;
 			for (int j = 0; j < height; j++) {
-				if (pole[i][j])
-					kolvoLine++; //Если я линию нашёл увеличил счётчик на 1
-				pole[delLine][j] = pole[i][j]; 
+				if (pole[i][j]) //Если я линию нашёл увеличил счётчик на 1
+					kolvoLine++;
+				pole[delLine][j] = pole[i][j];
 			}
 			if (kolvoLine < height) //Если линия заполнена, она будет удалена
 				delLine--;
 		}
 
 		/*Делаем базовые значения фигуры*/
-		stepX = 0; 
+		stepX = 0;
 		rotate = false;
 		delay = 0.7;
 		window1.clear(Color::White); //Цвет окошка всего
